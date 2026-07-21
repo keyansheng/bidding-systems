@@ -1,0 +1,33 @@
+name: Typst
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: typst-community/setup-typst@v5
+
+      - name: Compile
+        run: |
+          for i in *.typ; do
+            typst compile "$i" "${i%typ}pdf" --ignore-system-fonts
+          done
+
+      - name: Commit
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add *.pdf
+          git commit -m build
+          git push -f origin HEAD:pdf
