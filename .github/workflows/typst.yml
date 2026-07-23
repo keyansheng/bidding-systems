@@ -23,12 +23,13 @@ jobs:
           for i in *.typ; do
             typst compile "$i" "${i%typ}pdf" --ignore-system-fonts
             typst compile "$i" "${i%typ}svg" --ignore-system-fonts --pretty
+            echo "[![${i%.typ}](${i%typ}svg)](${i%typ}pdf)" >> README.md
           done
 
       - name: Commit
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add *.pdf *.svg
+          git add *.pdf *.svg README.md
           git commit -m build
           git push -f origin HEAD:pdf
