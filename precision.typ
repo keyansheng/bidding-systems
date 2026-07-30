@@ -156,11 +156,14 @@
 
 #table(
   columns: 3,
-  [1#C\-1#D\-2M/3m], [22+], [5+ cards],
+  [1#C\-1#D\-2M], [22+  ], [5+ cards],
+  [1#C\-1#D\-3m], [24+  ], [5+ cards],
+  [1#C\-1#D\-3m], [22-23], [6+ cards #footnote[Treat hands with stops as balanced, bid NT] #footnote[22-23 4441/5431 can't exceed 3m, bid 2NT]],
 )
 
 #table(
   columns: 3,
-  [1#C\-1#D\-2M3#C#D\-3#C#D\N], [0-3], [Artificial],
-  [Others                    ], [4+ ], [4+ cards],
+  [1#C\-1#D\-2M-3#C        ], [0-3], [Artificial],
+  [1#C\-1#D\-3#C#D\-3#D\4#C], [0-3], [No stoppers],
+  [Others                  ], [4+ ], [Natural],
 )
